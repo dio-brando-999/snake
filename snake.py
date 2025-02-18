@@ -1,17 +1,19 @@
 class Snake:
+    #__init__: Tuple Tuple -> None
     def __init__(self, start_pos, start_direction):
         self.body = [start_pos]
         self.direction = start_direction
-    def move(self):
+    #move: None -> None
+    #updates a snakes 
+    def move(self) -> None:
         newHead=(self.body[0][0]+self.direction[0],self.body[0][1]+self.direction[1])
         self.body.insert(0, newHead)
         self.body.pop()
     
-    #check_for_collison: Snake -> Boolean
+    #check_for_collison: None -> Boolean
     #checks the snake if it has collided with itself or not
-    #returns rue if it has collided, 
-    #else: false
-    def check_for_collison(self):
+    #returns true if it has collided, else: false
+    def check_for_collison(self) -> bool:
         head = self.body[0] 
         body_positions = set(self.body[1:])
         if head in body_positions:
